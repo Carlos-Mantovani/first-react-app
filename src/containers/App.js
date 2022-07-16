@@ -3,6 +3,7 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import FilterButtons from '../components/FilterButtons';
+import ErrorBoundry from '../components/ErrorBoundry';
 import { characters } from '../characters';
 import { npcs } from '../npcs';
 import './App.css';
@@ -43,7 +44,9 @@ class App extends Component {
                 <FilterButtons filterPCs={this.filterPCs} filterNPCs={this.filterNPCs}/>
                 <SearchBox searchChange={this.onSearchChange} />
                 <Scroll>
-                    <CardList characters={filteredCharacters} />
+                    <ErrorBoundry>
+                        <CardList characters={filteredCharacters} />
+                    </ErrorBoundry >
                 </Scroll>
             </div>
         );
